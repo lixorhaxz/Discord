@@ -11,7 +11,7 @@ my_token ='NTI2NjE0NDc4MTUwNjk2OTYw.Dysr4g.q3Bq_EbVrnBAB4WPk-fEJYWYUec'
 client = commands.Bot(command_prefix = '+')
 
 client.remove_command('help')
-status = ['^help for commands', 'MUSIC', "LixorBot"]
+status = ['+help for commands', 'https://lixorbot.weebly.com', "LixorBot"]
 
 players = {}
 
@@ -43,6 +43,14 @@ async def on_message(message):
     if message.content.startswith('^help'):
         userID = message.author.id
         await client.send_message(message.channel, '<@%s> ***Check*** `DM` ***For Information*** :mailbox_with_mail: ' % (userID))
+        
+          await client.process_commands(message)
+    if message.content.startswith('+video'):
+        userID = message.author.id
+        await client.send_message(message.channel, '<@%s> ***Check*** `DM` ***For Information*** :mailbox_with_mail: ' % (userID))
+        
+        
+        
 
 @client.command(pass_context =True)
 async def help(ctx):
