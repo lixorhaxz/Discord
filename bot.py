@@ -11,7 +11,7 @@ my_token ='NTI2NjE0NDc4MTUwNjk2OTYw.Dysr4g.q3Bq_EbVrnBAB4WPk-fEJYWYUec'
 client = commands.Bot(command_prefix = '+')
 
 client.remove_command('help')
-status = ['^help for commands', 'MUSIC', "LixorBot"]
+status = ['+help for commands', 'https://lixorbot.weebly.com', "LixorBot"]
 
 players = {}
 
@@ -49,37 +49,6 @@ async def on_message(message):
         userID = message.author.id
         await client.send_message(message.channel, '<@%s> ***Check*** `DM` ***For Information*** :mailbox_with_mail: ' % (userID))
         
-        
-        @client.command(pass_context = True)
-@commands.has_permissions(kick_members=True)
-async def kick(ctx, userName: discord.User):
-    """Kick A User from server"""
-    await client.kick(userName)
-    await client.say("Successfully User Has Been Kicked!")
-
-
-        @client.command(pass_context = True)
-@commands.has_permissions(kick_members=True)
-async def kick(ctx, userName: discord.User):
-    """Kick A User from server"""
-    await client.kick(userName)
-    await client.say("Successfully User Has Been Kicked!")
-
-@client.command(pass_context = True)
-@commands.has_permissions(ban_members=True)
-async def ban(ctx, userName: discord.User):
-    """Ban A User from server"""
-    await client.ban(userName)
-    await client.say("Successfully User Has Been Banned!")
-
-
-
-@client.command(pass_context = True)
-@commands.has_permissions(ban_members=True)
-async def ban(ctx, userName: discord.User):
-    """Ban A User from server"""
-    await client.ban(userName)
-    await client.say("Successfully User Has Been Banned!")
         
         
 
