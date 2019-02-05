@@ -43,6 +43,12 @@ async def on_message(message):
     if message.content.startswith('+help'):
         userID = message.author.id
         await client.send_message(message.channel, '<@%s> ***Check*** `DM` ***For Information*** :mailbox_with_mail: ' % (userID))
+	
+	await client.process_commands(message)
+    if message.content.startswith('+video'):
+        userID = message.author.id
+        await client.send_message(message.channel, '<@%s> ***Check*** `DM` ***For Information*** :mailbox_with_mail: ' % (userID))
+	
 
 @client.command(pass_context =True)
 async def help(ctx):
