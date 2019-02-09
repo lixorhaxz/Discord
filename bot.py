@@ -92,20 +92,20 @@ async def video(ctx):
 
 @client.command(pass_context = True)
 async def join(ctx):
-    channel =  ctx.message.author.voice.voice_channel
+    channel = ctx.message.author.voice.voice_channel
     embed = discord.Embed(
         title = 'Voice channel',
         description = 'commands for the voice channel.',
         colour = discord.Colour.blue()
     )
 
-    embed.add_field(name = '+play', value = 'play youtube audio with url', inline = False)
-    embed.add_field(name = '+pause', value = 'pauses audio', inline = False)
-    embed.add_field(name = '+resume', value = 'resumes audio', inline = False)
-    embed.add_field(name = '+leave', value = 'leave voice channel', inline = False)
+    embed.add_field(name = '^play', value = 'play youtube audio with url', inline = False)
+    embed.add_field(name = '^pause', value = 'pauses audio', inline = False)
+    embed.add_field(name = '^resume', value = 'resumes audio', inline = False)
+    embed.add_field(name = '^leave', value = 'leave voice channel', inline = False)
 
     await client.say(embed=embed)
-    await client.join_voice_channel(channel)
+   
 
 
 @client.command(pass_context = True)
@@ -163,7 +163,7 @@ async def say(*args):
 
 
 @client.command(pass_context=True)
-async def memberinfo(ctx, user: discord.Member):
+async def userinfo(ctx, user: discord.Member):
     embed = discord.Embed(title="{}'s info".format(user.name), description="Here's what I could find.", color=0x00ff00)
     embed.add_field(name="Name", value=user.name, inline=True)
     embed.add_field(name="ID", value=user.id, inline=True)
