@@ -40,7 +40,7 @@ async def on_member_join(member):
 async def on_message(message):
     
     await client.process_commands(message)
-    if message.content.startswith('^help'):
+    if message.content.startswith('+help'):
         userID = message.author.id
         await client.send_message(message.channel, '<@%s> ***Check*** `DM` ***For Information*** :mailbox_with_mail: ' % (userID))
         
@@ -57,13 +57,16 @@ async def help(ctx):
     author = ctx.message.author
     embed = discord.Embed(Colour = discord.Colour.orange())
     embed.set_author(name = 'Help Commands')
-    embed.add_field(name ='^say', value ='Returns what the user says.', inline=False)
-    embed.add_field(name ='^clear', value ='Deletes certain amount of messages, default amount is 10', inline=False)
-    embed.add_field(name ='^join', value ='The bot joins the current voice channel, the user must be in a voice channel to use this comand', inline=False)
-    embed.add_field(name ='^leave', value ='The bot leaves the current voice channel.', inline=False)
-    embed.add_field(name ='^play', value ='Plays the audio from a youtube url', inline=False)
-    embed.add_field(name ='^serverinfo', value ='Gives the server information on the selected user', inline=False)
-    embed.add_field(name ='Ban', value ='This Funcion Is Deleted Because For Error! (This Funcion Is Not Available)', inline=False)
+    embed.add_field(name ='+say', value ='Returns what the user says.', inline=False)
+    embed.add_field(name ='+clear', value ='Deletes certain amount of messages, default amount is 10', inline=False)
+    embed.add_field(name ='+join', value ='The bot joins the current voice channel, the user must be in a voice channel to use this comand', inline=False)
+    embed.add_field(name ='+leave', value ='The bot leaves the current voice channel.', inline=False)
+    embed.add_field(name ='+play', value ='Plays the audio from a youtube url', inline=False)
+    embed.add_field(name ='+userinfo', value ='Gives the server information on the selected user', inline=False)
+    embed.add_field(name ='+Ban', value ='New Function Thanks To @Annonymous_Forces#8796 for code', inline=False)
+    embed.add_field(name ='+kick', value 
+=' New Function Thanks To @Annonymous_Forces#8796 for code'
+,inline=False)
 
     await client.send_message(author, embed=embed)
 
@@ -96,10 +99,10 @@ async def join(ctx):
         colour = discord.Colour.blue()
     )
 
-    embed.add_field(name = '^play', value = 'play youtube audio with url', inline = False)
-    embed.add_field(name = '^pause', value = 'pauses audio', inline = False)
-    embed.add_field(name = '^resume', value = 'resumes audio', inline = False)
-    embed.add_field(name = '^leave', value = 'leave voice channel', inline = False)
+    embed.add_field(name = '+play', value = 'play youtube audio with url', inline = False)
+    embed.add_field(name = '+pause', value = 'pauses audio', inline = False)
+    embed.add_field(name = '+resume', value = 'resumes audio', inline = False)
+    embed.add_field(name = '+leave', value = 'leave voice channel', inline = False)
 
     await client.say(embed=embed)
     await client.join_voice_channel(channel)
@@ -135,9 +138,20 @@ async def stop(ctx):
     id = ctx.message.server.id
     players[id].stop()
 
-@client.command()
-async def ban(type):
-	await bot.say('Banned 'f'{type}')
+
+@client.command(pass_context = True)
+@commands.has_permissions(kick_members=True)
+async def kick(ctx, userName: discord.User):
+    """Kick A User from server"""
+    await client.kick(userName)
+    await client.say("Successfully User Has Been Kicked!")
+
+@client.command(pass_context = True)
+@commands.has_permissions(ban_members=True)
+async def ban(ctx, userName: discord.User):
+    """Ban A User from server"""
+    await client.ban(userName)
+    await client.say("Successfully User Has Been Banned!")
 
 @client.command()
 async def say(*args):
