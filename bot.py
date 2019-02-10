@@ -5,10 +5,11 @@ import asyncio
 from itertools import cycle
 import time
 import youtube_dl
+import pip
 
 my_token ='NTI2NjE0NDc4MTUwNjk2OTYw.Dysr4g.q3Bq_EbVrnBAB4WPk-fEJYWYUec'
 
-client = commands.Bot(command_prefix = '+')
+client = commands.Bot(command_prefix = 'x')
 
 client.remove_command('help')
 status = ['+help for commands', 'https://lixorbot.weebly.com', "LixorBot"]
@@ -91,14 +92,14 @@ async def video(ctx):
     await client.send_message(author, embed=embed)
     
     
-@bot.command()
+@client.command()
 async def findworld(type):
-	await bot.say('https://growtopiagame.com/worlds/'f'{type}.png')
+	await client.say('https://growtopiagame.com/worlds/'f'{type}.png')
 	
 	
-@bot.command()
+@client.command()
 async def link(type):
-	await bot.say('https://www.ss'f'{type}')
+	await client.say('https://www.ss'f'{type}')
     
     
 
