@@ -9,7 +9,7 @@ import pip
 
 my_token ='NTI2NjE0NDc4MTUwNjk2OTYw.Dysr4g.q3Bq_EbVrnBAB4WPk-fEJYWYUec'
 
-client = commands.Bot(command_prefix = 'x')
+client = commands.Bot(command_prefix = '-')
 
 client.remove_command('help')
 status = ['+help for commands', 'https://lixorbot.weebly.com', "LixorBot"]
